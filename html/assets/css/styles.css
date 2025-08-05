@@ -157,7 +157,7 @@ td {
     display: flex; /* Usa flexbox */
     list-style: none; /* Sin viñetas */
     margin: 0 auto; /* Centra horizontalmente */
-    padding: 0 20px; /* Espaciado lateral */
+    padding: 0 10px; /* Espaciado lateral */
     max-width: 1200px; /* Ancho máximo */
     align-items: center; /* Alinea verticalmente */
 }
@@ -224,7 +224,7 @@ td {
     }
 
     /* Muestra el botón hamburguesa en pantallas móviles */
-    /* .menu-toggle {
+   /*  .menu-toggle {
         display: block;
     } */
 

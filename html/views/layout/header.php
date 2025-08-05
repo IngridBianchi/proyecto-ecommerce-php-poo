@@ -26,6 +26,7 @@
 		<!-- MENU -->
 		<?php $categorias = Utils::showCategorias(); ?>
 		<nav id="menu">
+			<div class="menu-toggle">☰</div>
 			<ul class="menu-items">
 				<li><a href="<?= base_url ?>"><i class="fas fa-home"></i> Inicio</a></li>
 				<?php while ($cat = $categorias->fetch_object()): ?>
@@ -40,4 +41,8 @@
 		</nav>
 
 		<div id="content">
-			
+			<script>
+				document.querySelector('.menu-toggle').addEventListener('click', function() {
+					document.querySelector('.menu-items').classList.toggle('active');
+				});
+			</script>
