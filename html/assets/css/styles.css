@@ -29,7 +29,8 @@ a {
 
 /* Mantiene el color rojo para enlaces visitados */
 a:visited {
-    color: #E63946;
+    color: #ecececff;
+    text-shadow: 1px 1px 2px #F1FAEE; 
 }
 
 /* Cambia el color a blanco al pasar el ratón por un enlace */
@@ -138,6 +139,8 @@ td {
     top: 0; /* Posición inicial */
     z-index: 1000; /* Prioridad sobre otros elementos */
     border-bottom: none; /* Quitar la línea roja en móvil */
+    display: flex;         /* Añadido */
+    justify-content: center;
 }
 
 /* Estiliza el botón hamburguesa (oculto por defecto) */
@@ -304,6 +307,7 @@ td {
     background: #2D2D2D; /* Fondo oscuro */
     border-radius: 5px; /* Bordes redondeados */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    align-items: center;
 }
 
 /* Estiliza los títulos dentro de la barra lateral */
@@ -346,6 +350,17 @@ td {
     width: 60%; /* Ancho del 60% */
     margin: 0 auto; /* Centra horizontalmente */
     padding: 20px; /* Espaciado interno */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_container input[type="submit"] {
+    width: 100%; /* Define un ancho para el botón */
+    margin-left: 5px; /* Centra el botón horizontalmente */
+    margin-right: 5px; /* Centra el botón horizontalmente */
+    align-items: center;
 }
 
 /* Estiliza etiquetas y campos de entrada */
@@ -356,9 +371,10 @@ input[type="email"],
 input[type="number"],
 select,
 textarea {
-    display: block; /* Muestra como bloque */
+        display: inline-block; /* Muestra como bloque */
     width: 100%; /* Ocupa todo el ancho */
-    margin: 5px 0; /* Espaciado vertical */
+    margin: 9px 0;
+    margin-left: 22px; /* Espaciado vertical */
     font-size: 16px; /* Tamaño de fuente */
 }
 
@@ -369,6 +385,7 @@ input[type="email"],
 input[type="number"],
 select,
 textarea {
+    margin-left: 3px;
     background: #3A3F41; /* Fondo gris oscuro */
     border: 1px solid #555; /* Borde gris */
     padding: 10px; /* Espaciado interno */
@@ -391,14 +408,20 @@ input[type="button"],
 input[type="submit"],
 button,
 .button {
-    background: linear-gradient(90deg, #E63946, #F1FAEE); /* Gradiente rockero */
-    color: #1C2526; /* Texto oscuro */
-    padding: 10px 20px; /* Espaciado interno */
+    background: linear-gradient(90deg, #E63946, #1b1b1bff); /* Gradiente rockero */
+    color: #ffffffff; /* Texto oscuro */
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambia el cursor a mano */
-    font-weight: 700; /* Negrita */
+    font-weight: 600; /* Negrita */
     transition: all 0.3s ease; /* Suaviza animaciones */
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
 
 /* Efecto al pasar el ratón sobre los botones */
@@ -408,6 +431,7 @@ button:hover,
 .button:hover {
     background: linear-gradient(90deg, #F1FAEE, #E63946); /* Gradiente inverso */
     box-shadow: 0 0 10px rgba(230, 57, 70, 0.7); /* Sombra neón */
+    color: #050707ff; /* Texto oscuro */
 }
 
 /* Estiliza botones pequeños */
@@ -436,30 +460,43 @@ button:hover,
 /* CENTRAL */
 /* Estiliza la sección central */
 #central {
-    width: 75%; /* Ancho del 75% */
-    padding: 30px; /* Espaciado interno */
+    width: 72%;
+    min-height: 600px;
+    float: right;
+    border-left: 1px solid #ccc;
+    box-shadow: -2px -1px 1px #640000ff;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 /* Estiliza los títulos de la sección central */
-#central h1 {
-    font-size: 28px; /* Tamaño de fuente */
-    font-weight: 700; /* Negrita */
-    text-align: center; /* Centra el texto */
-    color: #F1FAEE; /* Texto claro */
-    border-bottom: 2px solid #E63946; /* Línea roja inferior */
-    padding-bottom: 15px; /* Espaciado inferior */
-    margin-bottom: 20px; /* Espaciado inferior */
+#central h1{
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    border-bottom: 1px solid #E63946;
+    margin-bottom: 25px;
+    padding: 11px;
+    padding-bottom: 23px;
+    padding-top: 23px;
+    width: 100%;
 }
 
 /* PRODUCTOS */
 /* Estiliza los productos */
 .product {
     width: 30%; /* Ancho del 30% */
-    margin: 15px; /* Margen externo */
+    margin: 10px; /* Margen externo */
     background: #3A3F41; /* Fondo gris oscuro */
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Oculta contenido que desborde */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza animaciones */
+    display: flex; /* <--- AÑADIDO */
+    flex-direction: column; /* <--- AÑADIDO */
+    justify-content: flex-start;
 }
 
 /* Efecto al pasar el ratón sobre los productos */
@@ -470,27 +507,28 @@ button:hover,
 
 /* Estiliza los enlaces dentro de los productos */
 .product a {
-    color: #F1FAEE; /* Texto claro */
+    color: #f7f3f3ff; 
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 /* Efecto al pasar el ratón sobre los enlaces de productos */
 .product a:hover {
-    color: #E63946; /* Cambia a rojo vibrante */
+    color: #020000ff; /* Cambia a rojo vibrante */
 }
 
 /* Estiliza las imágenes de los productos */
 .product img {
-    width: 100%; /* Ocupa todo el ancho */
-    height: 200px; /* Altura fija */
-    object-fit: cover; /* Ajusta la imagen sin deformarla */
-    border-bottom: 2px solid #E63946; /* Línea roja inferior */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* Estiliza los títulos de los productos */
 .product h2 {
-    font-size: 20px; /* Tamaño de fuente */
-    font-weight: 700; /* Negrita */
-    margin: 10px; /* Margen interno */
+    font-size: 18px;
+    margin-bottom: 10px;
+    min-height: 40px; /* Margen interno */
 }
 
 /* Estiliza los párrafos de los productos */
@@ -498,6 +536,7 @@ button:hover,
     font-size: 16px; /* Tamaño de fuente */
     color: #F1FAEE; /* Texto claro */
     margin: 0 10px 10px; /* Margen interno */
+    text-align: center;
 }
 
 /* Estiliza las imágenes del carrito */
@@ -507,27 +546,31 @@ button:hover,
 
 /* DETALLE PRODUCTO */
 /* Estiliza la sección de imagen en detalle */
-#detail-product .image {
-    width: 45%; /* Ancho del 45% */
+#detail-product {
+    width: 100%; 
 }
 
 /* Estiliza la imagen en detalle */
 #detail-product img {
-    width: 100%; /* Ocupa todo el ancho */
+    width: 90%; /* Ocupa todo el ancho */
     border-radius: 10px; /* Bordes redondeados */
+    align-items: center;
+    display: block;
+    margin: 0 auto; /* Centra la imagen */
 }
 
 /* Estiliza la sección de datos en detalle */
 #detail-product .data {
     width: 50%; /* Ancho del 50% */
-    padding: 20px; /* Espaciado interno */
+    padding: 10px; /* Espaciado interno */
 }
 
 /* Estiliza la descripción en detalle */
 #detail-product .description {
-    font-size: 16px; /* Tamaño de fuente */
+    font-size: 20px; /* Tamaño de fuente */
     color: #F1FAEE; /* Texto claro */
     margin-bottom: 20px; /* Espaciado inferior */
+    margin-top: 20px;
 }
 
 /* Estiliza el precio en detalle */
@@ -535,12 +578,15 @@ button:hover,
     font-size: 24px; /* Tamaño de fuente */
     color: #E63946; /* Rojo vibrante */
     font-weight: 700; /* Negrita */
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 /* Estiliza el botón en detalle */
 #detail-product .button {
     width: 220px; /* Ancho fijo */
     text-align: center; /* Centra el texto */
+    align-items: center;
 }
 
 /* FOOTER */

@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
-ErrorDocument 404 http://localhost/master-php/proyecto-php-poo/error/index
+ErrorDocument 404 http://localhost:8080/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
