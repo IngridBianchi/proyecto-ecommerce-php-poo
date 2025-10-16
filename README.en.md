@@ -36,7 +36,7 @@ This project is configured to run easily on any machine with Docker.
     ```bash
     git clone https://github.com/IngridBianchi/proyecto-ecommerce-php-poo.git
     cd your-repository
-    ```
+    
 
 2.  **Build and run the containers:**
     This command will create and configure the Apache/PHP server and the MySQL database.
