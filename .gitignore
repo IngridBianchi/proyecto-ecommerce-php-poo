@@ -1,0 +1,32 @@
+# Dependency directories
+/vendor/
+
+# Configuration and secrets
+.env
+.env.local
+
+# Docker
+.docker/
+db_data/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project specific logs
+logs/
+*.log
+
+# Temporary Project Guidance (as requested)
+modificaciones.md
+GEMINI.md
+
+# PHPUnit / Testing
+.phpunit.result.cache
+/coverage/

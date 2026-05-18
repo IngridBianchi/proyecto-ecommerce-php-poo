@@ -304,6 +304,7 @@ td {
     background: #2D2D2D; /* Fondo oscuro */
     border-radius: 5px; /* Bordes redondeados */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    text-align: center; /* Centra el contenido por defecto para links como ver el carrito */
 }
 
 /* Estiliza los títulos dentro de la barra lateral */
@@ -454,12 +455,15 @@ button:hover,
 /* PRODUCTOS */
 /* Estiliza los productos */
 .product {
-    width: 30%; /* Ancho del 30% */
-    margin: 15px; /* Margen externo */
+    width: 45%; /* Ancho ajustado para permitir dos columnas con margen */
+    display: inline-block; /* Permite alineación horizontal */
+    vertical-align: top; /* Alinea los bloques por la parte superior */
+    margin: 2%; /* Margen externo relativo */
     background: #3A3F41; /* Fondo gris oscuro */
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden; /* Oculta contenido que desborde */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Suaviza animaciones */
+    text-align: center; /* Centra el contenido interno */
 }
 
 /* Efecto al pasar el ratón sobre los productos */
@@ -471,6 +475,7 @@ button:hover,
 /* Estiliza los enlaces dentro de los productos */
 .product a {
     color: #F1FAEE; /* Texto claro */
+    display: block; /* Ocupa todo el ancho */
 }
 
 /* Efecto al pasar el ratón sobre los enlaces de productos */
@@ -481,7 +486,7 @@ button:hover,
 /* Estiliza las imágenes de los productos */
 .product img {
     width: 100%; /* Ocupa todo el ancho */
-    height: 200px; /* Altura fija */
+    height: 250px; /* Altura aumentada para mejor visualización */
     object-fit: cover; /* Ajusta la imagen sin deformarla */
     border-bottom: 2px solid #E63946; /* Línea roja inferior */
 }
@@ -490,14 +495,27 @@ button:hover,
 .product h2 {
     font-size: 20px; /* Tamaño de fuente */
     font-weight: 700; /* Negrita */
-    margin: 10px; /* Margen interno */
+    margin: 15px 10px; /* Margen interno aumentado */
+    min-height: 50px; /* Altura mínima para alinear botones */
 }
 
-/* Estiliza los párrafos de los productos */
+/* Estiliza los párrafos de los productos (precios) */
 .product p {
-    font-size: 16px; /* Tamaño de fuente */
-    color: #F1FAEE; /* Texto claro */
-    margin: 0 10px 10px; /* Margen interno */
+    font-size: 22px; /* Tamaño de fuente aumentado para el precio */
+    color: #E63946; /* Rojo vibrante para resaltar el precio */
+    font-weight: 700;
+    margin: 0 10px 15px; /* Margen interno */
+}
+
+/* Estiliza el botón comprar específico para las cards de productos */
+.product .button {
+    display: block; /* Ocupa todo el ancho */
+    width: 100%; /* Ancho completo */
+    border-radius: 0; /* Botón cuadrado que encaja con la card */
+    padding: 15px 0; /* Espaciado vertical aumentado */
+    font-size: 18px; /* Tamaño de fuente más grande */
+    text-shadow: 2px 2px 4px rgba(230, 57, 70, 0.8); /* Sombra roja detrás de la palabra Comprar */
+    text-transform: uppercase; /* Todo en mayúsculas para mayor impacto */
 }
 
 /* Estiliza las imágenes del carrito */
@@ -554,45 +572,80 @@ button:hover,
 }
 
 /* CARRITO */
-/* Estiliza el contenedor de eliminación del carrito */
-.delete-carrito {
-    width: 300px; /* Ancho fijo */
+.cart-footer {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #E63946;
+    padding-top: 20px;
 }
 
-/* Estiliza el botón de eliminación */
-.button-delete {
-    width: 120px; /* Ancho fijo */
+.cart-actions {
+    flex: 1;
 }
 
-/* Estiliza el botón del carrito */
-.button-carrito {
-    width: 100px; /* Ancho fijo */
+.cart-totals {
+    text-align: right;
+    flex: 1;
 }
 
-/* Estiliza el contenedor del total del carrito */
-.total-carrito {
-    width: 300px; /* Ancho fijo */
+.cart-totals h3 {
+    color: #F1FAEE;
+    font-size: 26px;
+    margin-bottom: 15px;
 }
 
-/* Estiliza los títulos dentro del total del carrito */
-.total-carrito h3 {
-    color: #F1FAEE; /* Texto claro */
-    margin-top: 10px; /* Espaciado superior */
+.units-management {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Estiliza el botón de pedido */
-.button-pedido {
-    width: 120px; /* Ancho fijo */
+.unit-count {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 15px;
 }
 
-/* Estiliza el contenedor de unidades arriba/abajo */
 .updown-unidades {
-    width: 100px; /* Ancho fijo */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Estiliza los botones dentro de unidades */
 .updown-unidades .button {
-    width: 30px; /* Ancho fijo */
-    padding: 5px; /* Espaciado interno */
-    margin: 5px; /* Margen externo */
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    font-size: 14px;
+}
+
+.button-delete {
+    width: 180px;
+}
+
+.button-pedido {
+    width: 250px;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra negra para mejor visibilidad */
+    text-transform: uppercase;
+}
+
+
+/* Estilo para las tablas del carrito */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #444;
 }

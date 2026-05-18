@@ -1,17 +1,15 @@
-FROM php:7.4-apache
+FROM php:8.2-apache
 
-# Instalar extensiones necesarias
-RUN docker-php-ext-install mysqli
+# Install necessary extensions
+RUN docker-php-ext-install pdo_mysql
 
-# Habilitar mod_rewrite de Apache
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Copiar el código de la aplicación
-COPY . /var/www/html
+# Set DocumentRoot to public
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Establecer permisos
-#RUN chown -R www-data:www-data /var/www/html
+# Set permissions
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN echo "<Directory /var/www/html>" >> /etc/apache2/apache2.conf
-RUN echo "AllowOverride All" >> /etc/apache2/apache2.conf
-RUN echo "</Directory>" >> /etc/apache2/apache2.conf

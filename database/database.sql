@@ -1,4 +1,4 @@
-CREATE DATABASE tienda_master;
+CREATE DATABASE IF NOT EXISTS tienda_master;
 USE tienda_master;
 
 CREATE TABLE usuarios(
@@ -13,7 +13,7 @@ CONSTRAINT pk_usuarios PRIMARY KEY(id),
 CONSTRAINT uq_email UNIQUE(email)  
 )ENGINE=InnoDb;
 
-INSERT INTO usuarios VALUES(NULL, 'Admin', 'Admin', 'admin@admin.com', 'contraseña', 'admin', null);
+INSERT INTO usuarios VALUES(NULL, 'Admin', 'Admin', 'admin@admin.com', '$2y$10$O0G9P.e/6F/jXGvG5vG5veXGvG5vG5vG5vG5vG5vG5vG5vG5vG5vG', 'admin', null);
 
 CREATE TABLE categorias(
 id              int(255) auto_increment not null,
@@ -36,7 +36,7 @@ stock           int(255) not null,
 oferta          varchar(2),
 fecha           date not null,
 imagen          varchar(255),
-CONSTRAINT pk_categorias PRIMARY KEY(id),
+CONSTRAINT pk_productos PRIMARY KEY(id),
 CONSTRAINT fk_producto_categoria FOREIGN KEY(categoria_id) REFERENCES categorias(id)
 )ENGINE=InnoDb;
 

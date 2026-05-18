@@ -1,72 +1,98 @@
-# 👕 T-Shirt Shop - PHP Project with MVC
+# 🚀 Modern E-Commerce Store (Pure PHP Overhaul)
 
-Welcome! This project is an online T-shirt shop developed from scratch in **pure PHP**, applying the **Object-Oriented Programming (OOP)** paradigm and the **Model-View-Controller (MVC)** architecture. It's a practical demonstration of how to structure a robust and maintainable web application without relying on frameworks.
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D%208.2-8892bf.svg?style=flat-square)](http://php.net/)
+[![MySQL Version](https://img.shields.io/badge/mysql-%3E%3D%208.0-4479a1.svg?style=flat-square)](https://www.mysql.com/)
+[![Architecture](https://img.shields.io/badge/architecture-MVC%20+%20Repository-blue.svg?style=flat-square)](#-architectural-evolution)
+[![Security](https://img.shields.io/badge/security-OWASP%20Aligned-red.svg?style=flat-square)](#-security-first-approach)
 
-## ✨ Key Features
+This project is a comprehensive modernization of a legacy academic PHP e-commerce application. It has been transformed from a procedural-style codebase into a **production-grade architecture** following modern standards (PSR), SOLID principles, and advanced security practices.
 
-*   **🛒 Shopping Cart:** Full functionality to add, view, and manage products in the cart.
-*   **👤 User Management:** Registration and login system with roles (Customer and Admin).
-*   **📦 Order System:** Users can complete purchases and view their order history.
-*   **⚙️ Admin Panel:**
-    *   Product Management (CRUD).
-    *   Category Management.
-    *   Order Management.
-*   **📐 MVC Architecture:** Organized, decoupled, and easy-to-maintain code.
-*   **🚀 Friendly URLs:** Clean and semantic routes thanks to the front controller and `mod_rewrite`.
+---
 
-## 🛠️ Tech Stack
+## 🏗️ Architectural Evolution
 
-*   **Backend:** PHP 7.4
-*   **Database:** MySQL 5.7
-*   **Web Server:** Apache 2.4 (with `mod_rewrite` enabled)
-*   **Frontend:** HTML5 & CSS3 (pure, no frameworks)
-*   **Containerization:** Docker and Docker Compose for a consistent development environment.
+The core of this project is the transition from a "Fat Controller" model to a **multi-layered architecture**, ensuring maintainability and scalability.
 
-## 🚀 Getting Started (Local Environment)
+-   **Front Controller Pattern**: A single entry point (`public/index.php`) manages all requests, providing a secure and centralized routing system.
+-   **PSR-4 Autoloading**: Leveraging Composer for standard-compliant class loading, eliminating manual `require` statements.
+-   **Data Access Layer (Repository Pattern)**: SQL logic is decoupled from business logic. Repositories manage data persistence using **PDO** and **Prepared Statements**.
+-   **Service Layer**: Complex business logic (Authentication, Cart calculations) is encapsulated in dedicated services.
+-   **Domain Models**: Clean PHP objects representing business entities, focused strictly on data structure.
 
-This project is configured to run easily on any machine with Docker.
+### Project Structure (PSR Standard)
+```bash
+src/
+├── Config/         # Environment & Database Singleton
+├── Controllers/    # Slim Controllers (Request/Response only)
+├── Models/         # Domain Entities
+├── Repositories/   # Data Access Layer (PDO)
+├── Services/       # Business Logic Layer
+└── Utils/          # Security, Cart, and CSRF Helpers
+public/             # Document Root (Assets, Entry Point)
+templates/          # Pure PHP View Layer (Separated from Logic)
+```
 
-### 1. Prerequisites
+---
 
-*   Have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+## 🛡️ Security-First Approach
 
-### 2. Installation
+Security was not treated as an afterthought, but as a core requirement:
 
-1.  **Clone the repository:**
+-   **SQL Injection Prevention**: 100% migration from `mysqli` to **PDO Prepared Statements**. Zero tolerance for raw query concatenation.
+-   **XSS Mitigation**: Implementation of a global escaping utility (`Security::e()`) applied to all user-generated content in the view layer.
+-   **CSRF Protection**: Token-based validation implemented for all state-changing requests (POST/PUT/DELETE).
+-   **Secure Authentication**: Passwords hashed using `password_hash()` with modern, automatically managed salts (PHP 8.2 standards).
+-   **Environmental Integrity**: Sensitive credentials managed via `.env` files, keeping secrets out of the codebase.
+
+---
+
+## ⚡ Technical Stack
+
+-   **Backend**: PHP 8.2 (Strict types enabled)
+-   **Database**: MySQL 8.0
+-   **Infrastructure**: Docker + Docker Compose (Multi-container setup)
+-   **Frontend**: Vanilla CSS with Flexbox/Grid for a responsive, "Rock-style" UI.
+-   **Dependencies**: Composer (PHP Dotenv, PHPUnit ready).
+
+---
+
+## 🛠️ Quick Start
+
+### Prerequisites
+- Docker & Docker Compose
+- Composer
+
+### Installation
+1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/IngridBianchi/proyecto-ecommerce-php-poo.git
-    cd your-repository
-    
-
-2.  **Build and run the containers:**
-    This command will create and configure the Apache/PHP server and the MySQL database.
-    ```bash
-    docker-compose up --build
+    git clone https://github.com/vparr/proyecto-ecommerce-php-poo.git
+    cd proyecto-ecommerce-php-poo
     ```
+2.  **Install dependencies**:
+    ```bash
+    composer install
+    # Or via Docker if you don't have composer local:
+    docker run --rm -v ${PWD}:/app composer install
+    ```
+3.  **Environment Setup**:
+    ```bash
+    cp .env.example .env
+    ```
+4.  **Launch the application**:
+    ```bash
+    docker-compose up -d --build
+    ```
+5.  **Access**: Visit `http://localhost:8080`
 
-3.  **Done! Access the application:**
-    Open your web browser and visit:
-    > **http://localhost:8080**
+---
 
-### 🗄️ About the Database
+## 🎯 Portfolio Highlights
 
-The `database/database.sql` script runs **automatically** the first time the database container is started, creating all the necessary tables and data for the application to work.
+-   **Refactoring Expertise**: Successfully migrated a legacy codebase to a modern, namespaced architecture.
+-   **Defensive Programming**: Strong focus on input validation, CSRF/XSS protection, and secure data handling.
+-   **Clean Code**: Adherence to PSR-12 coding standards and DRY (Don't Repeat Yourself) principles.
+-   **DevOps Mindset**: Containerized development environment for consistent behavior across machines.
 
-## 📂 Project Structure
+---
+*Developed with ❤️ and focus on engineering excellence by Ingrid Bianchi.*
 
-The project follows a clear MVC structure to separate concerns:
-
-```
-.
-├── config/         # Configuration files (DB, parameters).
-├── controllers/    # Business logic and coordination.
-├── models/         # Classes that interact with the database.
-├── views/          # HTML templates that make up the UI.
-├── assets/         # CSS, images, and fonts.
-├── helpers/        # Utility functions (e.g., cart management).
-├── uploads/        # Directory for product images.
-├── .htaccess       # Rewrite rules for friendly URLs.
-├── autoload.php    # Automatic class loading.
-├── index.php       # Front controller (single entry point).
-└── docker-compose.yml # Development environment orchestration.
-```
